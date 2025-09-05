@@ -41,6 +41,7 @@ jobs:
       #
       - name: Build
         run: ./scripts/build-image.sh
+        # run: docker build -t $CONTAINER_REGISTRY/video-streaming:$VERSION --file ./Dockerfile-prod .
 
       #
       # Publishes the Docker image to the container registry.
@@ -53,13 +54,13 @@ jobs:
       #
       # https://github.com/marketplace/actions/kubernetes-cli-kubectl
       #
-      - uses: tale/kubectl-action@v1
-        with:
-          base64-kube-config: ${{ secrets.KUBE_CONFIG }}
-          kubectl-version: v1.24.2
+      # - uses: tale/kubectl-action@v1
+      #   with:
+      #     base64-kube-config: ${{ secrets.KUBE_CONFIG }}
+      #     kubectl-version: v1.24.2
       
-      #
-      # Expands the configuration template and deploys the microservice.
-      #
-      - name: Deploy
-        run: ./scripts/deploy.sh
+      # #
+      # # Expands the configuration template and deploys the microservice.
+      # #
+      # - name: Deploy
+      #   run: ./scripts/deploy.sh
